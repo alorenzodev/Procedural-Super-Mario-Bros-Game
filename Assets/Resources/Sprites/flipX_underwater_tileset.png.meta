@@ -1,0 +1,2736 @@
+fileFormatVersion: 2
+guid: e2f256b031558a94c957b464a25d9d15
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 951749736982219382
+    second: flipX_underwater_tileset_0
+  - first:
+      213: -7658216479920149904
+    second: flipX_underwater_tileset_1
+  - first:
+      213: 3162515593223302616
+    second: flipX_underwater_tileset_2
+  - first:
+      213: 4271955147643628453
+    second: flipX_underwater_tileset_3
+  - first:
+      213: -8854555664119721140
+    second: flipX_underwater_tileset_4
+  - first:
+      213: 4140629089375076990
+    second: flipX_underwater_tileset_5
+  - first:
+      213: 2697633154145588483
+    second: flipX_underwater_tileset_6
+  - first:
+      213: -5140718519793832735
+    second: flipX_underwater_tileset_7
+  - first:
+      213: -879455688490248958
+    second: flipX_underwater_tileset_8
+  - first:
+      213: -2374858059217453533
+    second: flipX_underwater_tileset_9
+  - first:
+      213: -247045716210487035
+    second: flipX_underwater_tileset_10
+  - first:
+      213: 3693705385879642051
+    second: flipX_underwater_tileset_11
+  - first:
+      213: 2396005246312870294
+    second: flipX_underwater_tileset_12
+  - first:
+      213: 5208521787498236973
+    second: flipX_underwater_tileset_13
+  - first:
+      213: -1302041387189294107
+    second: flipX_underwater_tileset_14
+  - first:
+      213: -3175352668965892333
+    second: flipX_underwater_tileset_15
+  - first:
+      213: 1292887861413796852
+    second: flipX_underwater_tileset_16
+  - first:
+      213: 1690258678921813868
+    second: flipX_underwater_tileset_17
+  - first:
+      213: 1648273437266400098
+    second: flipX_underwater_tileset_18
+  - first:
+      213: 8492140699227619417
+    second: flipX_underwater_tileset_19
+  - first:
+      213: -9176930655676748846
+    second: flipX_underwater_tileset_20
+  - first:
+      213: -6942207718628205723
+    second: flipX_underwater_tileset_21
+  - first:
+      213: -5994337626858899108
+    second: flipX_underwater_tileset_22
+  - first:
+      213: 8711375619860288526
+    second: flipX_underwater_tileset_23
+  - first:
+      213: 5009560408932254422
+    second: flipX_underwater_tileset_24
+  - first:
+      213: -5523200894977220733
+    second: flipX_underwater_tileset_25
+  - first:
+      213: -605078576291497926
+    second: flipX_underwater_tileset_26
+  - first:
+      213: 8117133644388986296
+    second: flipX_underwater_tileset_27
+  - first:
+      213: -9127510972736336127
+    second: flipX_underwater_tileset_28
+  - first:
+      213: 2057863461544685997
+    second: flipX_underwater_tileset_29
+  - first:
+      213: -3627276579151962386
+    second: flipX_underwater_tileset_30
+  - first:
+      213: 3332986113210235163
+    second: flipX_underwater_tileset_31
+  - first:
+      213: 5828103509372524201
+    second: flipX_underwater_tileset_32
+  - first:
+      213: -3240093668349282300
+    second: flipX_underwater_tileset_33
+  - first:
+      213: 1748343284996958340
+    second: flipX_underwater_tileset_34
+  - first:
+      213: -4464414603238192755
+    second: flipX_underwater_tileset_35
+  - first:
+      213: 8326012400775517174
+    second: flipX_underwater_tileset_36
+  - first:
+      213: 5823039973908919905
+    second: flipX_underwater_tileset_37
+  - first:
+      213: 1923552898353004031
+    second: flipX_underwater_tileset_38
+  - first:
+      213: -3882780084853540102
+    second: flipX_underwater_tileset_39
+  - first:
+      213: -6297315917044929413
+    second: flipX_underwater_tileset_40
+  - first:
+      213: -2793595601441436376
+    second: flipX_underwater_tileset_41
+  - first:
+      213: -393925721738242267
+    second: flipX_underwater_tileset_42
+  - first:
+      213: -1873784005357095896
+    second: flipX_underwater_tileset_43
+  - first:
+      213: -2777429350432358262
+    second: flipX_underwater_tileset_44
+  - first:
+      213: -7942607842552402334
+    second: flipX_underwater_tileset_45
+  - first:
+      213: -8744674943326164726
+    second: flipX_underwater_tileset_46
+  - first:
+      213: 2391689778793980994
+    second: flipX_underwater_tileset_47
+  - first:
+      213: -8300997927370887882
+    second: flipX_underwater_tileset_48
+  - first:
+      213: -1507843256741610353
+    second: flipX_underwater_tileset_49
+  - first:
+      213: 3991406876526087179
+    second: flipX_underwater_tileset_50
+  - first:
+      213: -1045001428340961748
+    second: flipX_underwater_tileset_51
+  - first:
+      213: -3167471163509421835
+    second: flipX_underwater_tileset_52
+  - first:
+      213: 7895971052520146508
+    second: flipX_underwater_tileset_53
+  - first:
+      213: 411960212892256682
+    second: flipX_underwater_tileset_54
+  - first:
+      213: 2171642163885775050
+    second: flipX_underwater_tileset_55
+  - first:
+      213: 4878635019161788134
+    second: flipX_underwater_tileset_56
+  - first:
+      213: 1182443147846862175
+    second: flipX_underwater_tileset_57
+  - first:
+      213: -8651115605619043721
+    second: flipX_underwater_tileset_58
+  - first:
+      213: 3953564546170849661
+    second: flipX_underwater_tileset_59
+  - first:
+      213: -8162480976394226905
+    second: flipX_underwater_tileset_60
+  - first:
+      213: -1172645130724810370
+    second: flipX_underwater_tileset_61
+  - first:
+      213: -740318642414496963
+    second: flipX_underwater_tileset_62
+  - first:
+      213: 8109925756210846125
+    second: flipX_underwater_tileset_63
+  - first:
+      213: 2599221595644384769
+    second: flipX_underwater_tileset_64
+  - first:
+      213: -3785202456354579881
+    second: flipX_underwater_tileset_65
+  - first:
+      213: 3291402875412141446
+    second: flipX_underwater_tileset_66
+  - first:
+      213: -4125720162617061894
+    second: flipX_underwater_tileset_67
+  - first:
+      213: -3900616074323150654
+    second: flipX_underwater_tileset_68
+  - first:
+      213: 7707301931136746754
+    second: flipX_underwater_tileset_69
+  - first:
+      213: -2186880957457579294
+    second: flipX_underwater_tileset_70
+  - first:
+      213: -7403059367042716901
+    second: flipX_underwater_tileset_71
+  - first:
+      213: 4126622230836971351
+    second: flipX_underwater_tileset_72
+  - first:
+      213: -3381591390443213386
+    second: flipX_underwater_tileset_73
+  - first:
+      213: 2281990250201809671
+    second: flipX_underwater_tileset_74
+  - first:
+      213: 1252546010286943055
+    second: flipX_underwater_tileset_75
+  - first:
+      213: 5480029000814490713
+    second: flipX_underwater_tileset_76
+  - first:
+      213: -348153027182669547
+    second: flipX_underwater_tileset_77
+  - first:
+      213: 6902807639767518766
+    second: flipX_underwater_tileset_78
+  - first:
+      213: 8469581651506381619
+    second: flipX_underwater_tileset_79
+  - first:
+      213: 841047876629695880
+    second: flipX_underwater_tileset_80
+  - first:
+      213: -7575619214005175488
+    second: flipX_underwater_tileset_81
+  - first:
+      213: -2431924353547617669
+    second: flipX_underwater_tileset_82
+  - first:
+      213: 4507277839153143706
+    second: flipX_underwater_tileset_83
+  - first:
+      213: 473547497051114723
+    second: flipX_underwater_tileset_84
+  - first:
+      213: 5218995914427774804
+    second: flipX_underwater_tileset_85
+  - first:
+      213: -500346661591031867
+    second: flipX_underwater_tileset_86
+  - first:
+      213: -637142555161746963
+    second: flipX_underwater_tileset_87
+  - first:
+      213: -1008796075539374233
+    second: flipX_underwater_tileset_88
+  - first:
+      213: -7667595159219919886
+    second: flipX_underwater_tileset_89
+  - first:
+      213: -4825177684094177501
+    second: flipX_underwater_tileset_90
+  - first:
+      213: -8688840502324847741
+    second: flipX_underwater_tileset_91
+  - first:
+      213: -7394204414465726021
+    second: flipX_underwater_tileset_92
+  - first:
+      213: 2054238993556147266
+    second: flipX_underwater_tileset_93
+  - first:
+      213: -3084258663316241125
+    second: flipX_underwater_tileset_94
+  - first:
+      213: -5701279681008816993
+    second: flipX_underwater_tileset_95
+  - first:
+      213: -6594721904866534078
+    second: flipX_underwater_tileset_96
+  - first:
+      213: 1898158101771370396
+    second: flipX_underwater_tileset_97
+  - first:
+      213: -2645526431801801886
+    second: flipX_underwater_tileset_98
+  - first:
+      213: 3887268055049857292
+    second: flipX_underwater_tileset_99
+  - first:
+      213: 3996867579936048961
+    second: flipX_underwater_tileset_100
+  - first:
+      213: -1948430877089217551
+    second: flipX_underwater_tileset_101
+  - first:
+      213: 27864913211067015
+    second: flipX_underwater_tileset_102
+  - first:
+      213: -9150992377197069641
+    second: flipX_underwater_tileset_103
+  - first:
+      213: 259338264712946405
+    second: flipX_underwater_tileset_104
+  - first:
+      213: 5780110451551835985
+    second: flipX_underwater_tileset_105
+  - first:
+      213: -9002760009578290875
+    second: flipX_underwater_tileset_106
+  - first:
+      213: 3250743571828048561
+    second: flipX_underwater_tileset_107
+  - first:
+      213: 4504746389860457092
+    second: flipX_underwater_tileset_108
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 119
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67a85ebd75b453d00800000000000000
+      internalID: 951749736982219382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 119
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07a215dbfac88b590800000000000000
+      internalID: -7658216479920149904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_2
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 119
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dd65b22d2383eb20800000000000000
+      internalID: 3162515593223302616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_3
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 119
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ab23bfa298094b30800000000000000
+      internalID: 4271955147643628453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_4
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 119
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c439834798c4e1580800000000000000
+      internalID: -8854555664119721140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_5
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 119
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e72c9d20838767930800000000000000
+      internalID: 4140629089375076990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_6
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 119
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3051a2f9f0bef6520800000000000000
+      internalID: 2697633154145588483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_7
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 119
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ecaa613ebf78a8b0800000000000000
+      internalID: -5140718519793832735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_8
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 119
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20597dbf5bb8bc3f0800000000000000
+      internalID: -879455688490248958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_9
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 119
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32ebe5c7d2fca0fd0800000000000000
+      internalID: -2374858059217453533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_10
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 119
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 501fdf1ea31529cf0800000000000000
+      internalID: -247045716210487035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_11
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 119
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cf9d467a7da24330800000000000000
+      internalID: 3693705385879642051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_12
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 119
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6917372b312504120800000000000000
+      internalID: 2396005246312870294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_13
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 102
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2c07b448f2684840800000000000000
+      internalID: 5208521787498236973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_14
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 102
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eba9b1c1483eede0800000000000000
+      internalID: -1302041387189294107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_15
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 102
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31f03b14291eee3d0800000000000000
+      internalID: -3175352668965892333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_16
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 102
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fbdbf1f8a241f110800000000000000
+      internalID: 1292887861413796852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_17
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 102
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6fd7a72051057710800000000000000
+      internalID: 1690258678921813868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_18
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 102
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 263d9f055f7dfd610800000000000000
+      internalID: 1648273437266400098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_19
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 102
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 950891009f42ad570800000000000000
+      internalID: 8492140699227619417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_20
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 102
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dbaefba03ef4a080800000000000000
+      internalID: -9176930655676748846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_21
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 102
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56bd03e7cd258af90800000000000000
+      internalID: -6942207718628205723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_22
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 102
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c59315f00b5dfcca0800000000000000
+      internalID: -5994337626858899108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_23
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 102
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0455cea8f505e870800000000000000
+      internalID: 8711375619860288526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_24
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 102
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d2844f66a8858540800000000000000
+      internalID: 5009560408932254422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_25
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 102
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38f53c79c06a953b0800000000000000
+      internalID: -5523200894977220733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_26
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 85
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3832fe9d345a97f0800000000000000
+      internalID: -605078576291497926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_27
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 85
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bd6d2c0b0ad5a070800000000000000
+      internalID: 8117133644388986296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_28
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 85
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10f02924121945180800000000000000
+      internalID: -9127510972736336127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_29
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 85
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da170ad4aeffe8c10800000000000000
+      internalID: 2057863461544685997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_30
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 85
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eee9d8d5b2359adc0800000000000000
+      internalID: -3627276579151962386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_31
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 85
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b19b4370635214e20800000000000000
+      internalID: 3332986113210235163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_32
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 85
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a65b5e534591e050800000000000000
+      internalID: 5828103509372524201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_33
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 85
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4087c03b9ffd803d0800000000000000
+      internalID: -3240093668349282300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_34
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 85
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 488eeaf54fc534810800000000000000
+      internalID: 1748343284996958340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_35
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 85
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d89cbe362963b02c0800000000000000
+      internalID: -4464414603238192755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_36
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 85
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f3d8b75a20fb8370800000000000000
+      internalID: 8326012400775517174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_37
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 85
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 166bdb521089fc050800000000000000
+      internalID: 5823039973908919905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_38
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 85
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffdf00d6b25d1ba10800000000000000
+      internalID: 1923552898353004031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_39
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 85
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afaf75da5189d1ac0800000000000000
+      internalID: -3882780084853540102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_40
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 85
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7caf1eb9807b98a0800000000000000
+      internalID: -6297315917044929413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_41
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 85
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82d4df10a972b39d0800000000000000
+      internalID: -2793595601441436376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_42
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 68
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52717e7a4ae788af0800000000000000
+      internalID: -393925721738242267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_43
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 68
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 824b1e6ff5bfef5e0800000000000000
+      internalID: -1873784005357095896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_44
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 68
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a804cb2a8b69479d0800000000000000
+      internalID: -2777429350432358262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_45
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 68
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26eae6abf3036c190800000000000000
+      internalID: -7942607842552402334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_46
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 68
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a09e8c6687ca4a680800000000000000
+      internalID: -8744674943326164726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_47
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 68
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 244a2fd9e2df03120800000000000000
+      internalID: 2391689778793980994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_48
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 68
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63dedc99d5eeccc80800000000000000
+      internalID: -8300997927370887882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_49
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 68
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8cb2f00c80131be0800000000000000
+      internalID: -1507843256741610353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_50
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 68
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0c83652863546730800000000000000
+      internalID: 3991406876526087179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_51
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 68
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2e06f1dcb86f71f0800000000000000
+      internalID: -1045001428340961748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_52
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 68
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f84abe32c1ea04d0800000000000000
+      internalID: -3167471163509421835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_53
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 68
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c460b3e66df149d60800000000000000
+      internalID: 7895971052520146508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_54
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 51
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa9890781a397b500800000000000000
+      internalID: 411960212892256682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_55
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 51
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac81cadca09332e10800000000000000
+      internalID: 2171642163885775050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_56
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 51
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ee5be9a3b464b340800000000000000
+      internalID: 4878635019161788134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_57
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 51
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f55c18237c1e86010800000000000000
+      internalID: 1182443147846862175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_58
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 51
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7721d38313011f780800000000000000
+      internalID: -8651115605619043721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_59
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 51
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7987130202edd630800000000000000
+      internalID: 3953564546170849661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_60
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 51
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72373247cca09be80800000000000000
+      internalID: -8162480976394226905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_61
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 51
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e716e8f677de9bfe0800000000000000
+      internalID: -1172645130724810370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_62
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 51
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d33d84afd1cd9b5f0800000000000000
+      internalID: -740318642414496963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_63
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 51
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da91dbdc18e3c8070800000000000000
+      internalID: 8109925756210846125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_64
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 51
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10658ec154a421420800000000000000
+      internalID: 2599221595644384769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_65
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 51
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75a9c0abb62487bc0800000000000000
+      internalID: -3785202456354579881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_66
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 51
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 685d3a10a796dad20800000000000000
+      internalID: 3291402875412141446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_67
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 51
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afd0b800f5f7eb6c0800000000000000
+      internalID: -4125720162617061894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_68
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c83ac4c85a3ed9c0800000000000000
+      internalID: -3900616074323150654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_69
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20586167546d5fa60800000000000000
+      internalID: 7707301931136746754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_70
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e2cca41b53a6a1e0800000000000000
+      internalID: -2186880957457579294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_71
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1b6a409abc034990800000000000000
+      internalID: -7403059367042716901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_72
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 757844f1e05b44930800000000000000
+      internalID: 4126622230836971351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_73
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bdec1dfb8c2211d0800000000000000
+      internalID: -3381591390443213386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_74
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7030f24ca024baf10800000000000000
+      internalID: 2281990250201809671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_75
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4b6cf7c5ffe16110800000000000000
+      internalID: 1252546010286943055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_76
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 954f2608759fc0c40800000000000000
+      internalID: 5480029000814490713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_77
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 511dc479aac1b2bf0800000000000000
+      internalID: -348153027182669547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_78
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2e0239c9f2bbcf50800000000000000
+      internalID: 6902807639767518766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_79
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 333443663aff98570800000000000000
+      internalID: 8469581651506381619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_80
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88d0c9576900cab00800000000000000
+      internalID: 841047876629695880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_81
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04bf893567efdd690800000000000000
+      internalID: -7575619214005175488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_82
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7a3c227fa1104ed0800000000000000
+      internalID: -2431924353547617669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_83
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9f96ba60511d8e30800000000000000
+      internalID: 4507277839153143706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_84
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ecc10a80f0629600800000000000000
+      internalID: 473547497051114723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_85
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 457beabf1299d6840800000000000000
+      internalID: 5218995914427774804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_86
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cf505bbc596e09f0800000000000000
+      internalID: -500346661591031867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_87
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de1ac48c83a6827f0800000000000000
+      internalID: -637142555161746963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_88
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76fdaaa60590002f0800000000000000
+      internalID: -1008796075539374233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_89
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f3213dc3da379590800000000000000
+      internalID: -7667595159219919886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_90
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32fac611676890db0800000000000000
+      internalID: -4825177684094177501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_91
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38b96ec39990b6780800000000000000
+      internalID: -8688840502324847741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_92
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb9252fd242826990800000000000000
+      internalID: -7394204414465726021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_93
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24c8ba61b7f128c10800000000000000
+      internalID: 2054238993556147266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_94
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b154d9936138235d0800000000000000
+      internalID: -3084258663316241125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_95
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9c2158365cf0e0b0800000000000000
+      internalID: -5701279681008816993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_96
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24d51fb2e57da74a0800000000000000
+      internalID: -6594721904866534078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_97
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9fbc979cbc975a10800000000000000
+      internalID: 1898158101771370396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_98
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2630c841ab3394bd0800000000000000
+      internalID: -2645526431801801886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_99
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0968ff43b952f530800000000000000
+      internalID: 3887268055049857292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_100
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1470d5c33e9b77730800000000000000
+      internalID: 3996867579936048961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_101
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f3c1b5c078c5f4e0800000000000000
+      internalID: -1948430877089217551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_102
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78a84adadfef26000800000000000000
+      internalID: 27864913211067015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_103
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ba7cdebae4210180800000000000000
+      internalID: -9150992377197069641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_104
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e2a1e817ca599300800000000000000
+      internalID: 259338264712946405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_105
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1571543d4d3173050800000000000000
+      internalID: 5780110451551835985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_106
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5416efe4875cf0380800000000000000
+      internalID: -9002760009578290875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_107
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b202be2e06fc1d20800000000000000
+      internalID: 3250743571828048561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipX_underwater_tileset_108
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48a1bd279f2148e30800000000000000
+      internalID: 4504746389860457092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
