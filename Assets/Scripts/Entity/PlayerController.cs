@@ -73,11 +73,16 @@ public class PlayerController : MonoBehaviour
     public Sprite[] smallIdle, smallWalk, smallJump;
     [Space(5)]
     public Sprite[] bigIdle, bigWalk, bigJump;
+    public Sprite[] grow;
+    public Sprite[] goingDown;
     [Space(10)]
     //Cola de sprites a renderizar
     private Sprite[] currentAnim;
     private int animState = -1;
     public int currentSprite;
+    private bool flagGrowAnim;
+    private float counterGrowAnim = 0;
+    private bool isDown = false;
 
     //Reloj que cuenta el tiempo entre frames
     private float animClock = 0.0f;
@@ -108,7 +113,15 @@ public class PlayerController : MonoBehaviour
         isDetectedGroundOnRight = Physics2D.OverlapBox(rightPos.position, boxSizeY, 0.0f, whatIsGround);
         isDetectedGroundOnHead = Physics2D.OverlapBox(headPos.position, boxSizeHead, 0.0f, whatIsGround);
 
-        isDetectedMush = Physics2D.OverlapBox(new Vector2(this.transform.position.x, this.transform.position.y - 0.5f)  , new Vector2(this.GetComponent<BoxCollider2D>().size.x, this.GetComponent<BoxCollider2D>().size.y * 2f) , 0.0f, whatIsItems);
+        if (isBig)
+        {
+            isDetectedMush = Physics2D.OverlapBox(new Vector2(this.transform.position.x, this.transform.position.y), new Vector2(this.GetComponent<BoxCollider2D>().size.x, this.GetComponent<BoxCollider2D>().size.y), 0.0f, whatIsItems);
+        }
+        else
+        {
+            isDetectedMush = Physics2D.OverlapBox(new Vector2(this.transform.position.x, this.transform.position.y - 0.5f), new Vector2(this.GetComponent<BoxCollider2D>().size.x, this.GetComponent<BoxCollider2D>().size.y), 0.0f, whatIsItems);
+        }
+
 
         //isDetectedMushOnFeet = Physics2D.OverlapBox(feetPos.position, boxSizeFeet, 0.0f, whatIsItems);
 
@@ -135,12 +148,32 @@ public class PlayerController : MonoBehaviour
             isJumping = false;
         }
 
+        //Agacharse
+        if (isDetectedGroundOnFeet && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)) && isBig)
+        {
+            isDown = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            isDown = false;
+        }
+
         var pos = transform.position;
 
-        velocity = Mathf.MoveTowards(velocity, horizontalDirection, speedUp * Time.deltaTime);
+        
 
-        //rb.velocity = new Vector2(velocity, rb.velocity.y);
-        //pos.x += (speed * velocity) * Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow) && isDetectedGroundOnFeet && isBig)
+        {
+            velocity = Mathf.MoveTowards(velocity, 0, speedUp * Time.deltaTime);
+        }
+        else
+        {
+            velocity = Mathf.MoveTowards(velocity, horizontalDirection, speedUp * Time.deltaTime);
+        }
+            
+
+
 
         //TODO: encontrar mejora de codificación (modularidad)
         if (!isDetectedGroundOnLeft && (horizontalDirection == -1 || horizontalDirection == 0)) //direccion izq
@@ -199,10 +232,38 @@ public class PlayerController : MonoBehaviour
             renderer.flipX = true;
         }
 
-        
+
 
         //Cambio de sprites para animaciones
-        if (velocity != 0 && (rb.velocity.y <= 0.001 && rb.velocity.y >= -0.001) && isDetectedGroundOnFeet) //Se mueve en X
+        if ((isDetectedMush || flagGrowAnim) && counterGrowAnim < 1 && !isBig)
+        {
+            flagGrowAnim = true;
+            setAnim(3, isBig);
+            counterGrowAnim += Time.deltaTime;
+
+            if (counterGrowAnim >= 1)
+            {
+                flagGrowAnim = false;
+                counterGrowAnim = 0;
+                isBig = true;
+                Debug.Log("POSITIONS");
+                this.GetComponent<BoxCollider2D>().offset = new Vector2(this.GetComponent<BoxCollider2D>().offset.x, -0.02f);
+                this.GetComponent<BoxCollider2D>().size = new Vector2(this.GetComponent<BoxCollider2D>().size.x, 1.9f);
+
+                leftPos.localPosition = new Vector3(leftPos.localPosition.x, 0f);    
+                rightPos.localPosition = new Vector3(rightPos.localPosition.x, 0f);
+                headPos.localPosition = new Vector3(headPos.localPosition.x, 1f);
+
+
+                boxSizeY = new Vector2(boxSizeY.x, 1.7f);
+
+            }
+
+        }else if (isBig && isDown) 
+        {
+            setAnim(4, isBig);
+        }
+        else if (velocity != 0 && (rb.velocity.y <= 0.001 && rb.velocity.y >= -0.001) && isDetectedGroundOnFeet) //Se mueve en X
         {
             setAnim(1, isBig);
         }
@@ -212,9 +273,32 @@ public class PlayerController : MonoBehaviour
         }
         else if (rb.velocity.y != 0 && !isDetectedGroundOnFeet) //Se mueve en Y
         {
-            setAnim(2, isBig);
+            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow) && isBig)
+            {
+                if (currentAnim != bigJump)
+                {
+                    setAnim(4, isBig);
+                }
+                else
+                {
+                    setAnim(2, isBig);
+                }
+                    
+            }
+            else
+            {
+                if (currentAnim != goingDown)
+                {
+                    setAnim(2, isBig);
+                }
+                else
+                {
+                    setAnim(4, isBig);
+                }
+                    
+            }
+                
         }
-
 
         //Cuando intenta cruzar colliders, la animación con los sprites va más lenta.
         if ((isDetectedGroundOnLeft && horizontalDirection == -1)
@@ -224,6 +308,9 @@ public class PlayerController : MonoBehaviour
         {
             //reloj de animaciones
             animClock += (Time.deltaTime * Mathf.Abs(velocity) * (speed * 3)) / 3;
+        }else if (isDetectedMush || flagGrowAnim)
+        {
+            animClock += Time.deltaTime * 13;
         }
         else
         {
@@ -257,10 +344,36 @@ public class PlayerController : MonoBehaviour
         }
 
         if ((velocity == 0 || changeDir || isDetectedGroundOnLeft || isDetectedGroundOnRight)
-            && !(isDetectedGroundOnLeft && isDetectedGroundOnRight)) // Esta parte de la condicion elimina un error de deteccion de colisiones.
+            && !(isDetectedGroundOnLeft && isDetectedGroundOnRight) || Input.GetKey(KeyCode.DownArrow)) // Esta parte de la condicion elimina un error de deteccion de colisiones.
         {
             speed = 5.1f;
         }
+
+
+        //if (isGoingDown && !isBig)
+        //{
+        //    this.GetComponent<BoxCollider2D>().offset = new Vector2(this.GetComponent<BoxCollider2D>().offset.x, -0.5f);
+        //    this.GetComponent<BoxCollider2D>().size = new Vector2(this.GetComponent<BoxCollider2D>().size.x, 0.96f);
+
+        //    leftPos.position = new Vector3(leftPos.position.x, -1.5f);
+        //    rightPos.position = new Vector3(rightPos.position.x, -1.5f);
+        //    headPos.position = new Vector3(headPos.position.x, -1f);
+
+
+        //    boxSizeY = new Vector2(boxSizeY.x, 0.4f);
+        //}
+        //else if (!isGoingDown && isBig)
+        //{
+        //    this.GetComponent<BoxCollider2D>().offset = new Vector2(this.GetComponent<BoxCollider2D>().offset.x, -0.13);
+        //    this.GetComponent<BoxCollider2D>().size = new Vector2(this.GetComponent<BoxCollider2D>().size.x, 1.7f);
+
+        //    leftPos.position = new Vector3(leftPos.position.x, -1f);
+        //    rightPos.position = new Vector3(rightPos.position.x, -1f);
+        //    headPos.position = new Vector3(headPos.position.x, -0.1f);
+
+
+        //    boxSizeY = new Vector2(boxSizeY.x, 1.7f);
+        //}
 
 
         changeDir = false;
@@ -318,10 +431,41 @@ public class PlayerController : MonoBehaviour
             {
                 currentAnim = smallJump;
             }
+            
+            if(state == 3)
+            {
+                currentAnim = grow;
+            }
+
+            if (state == 4)
+            {
+                currentAnim = goingDown;
+            }
 
             animState = state;
-
+            
         }
+    }
+
+    public void growUp()
+    {   
+
+        animClock += (Time.deltaTime * Mathf.Abs(velocity) * (speed * 3));
+        
+
+        if (animClock >= 1)
+        {
+            currentSprite += 1;
+            animClock = 0;
+        }
+
+        if (currentSprite >= currentAnim.Length)
+        {
+            currentSprite = 0;
+        }
+
+        renderer.sprite = currentAnim[currentSprite];
+
     }
 
 
