@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     [Header("Detectores de elementos en la capa Default")]
     public bool isDetectedMush;
     public bool isDetectedMushOnFeet;
+    public bool isDetectedFlower;
 
     [Space(5)]
     //objetos detectores
@@ -52,7 +53,8 @@ public class PlayerController : MonoBehaviour
     public Vector2 boxSizeFeet;
     public Vector2 boxSizeHead;
     public LayerMask whatIsGround;
-    public LayerMask whatIsItems;
+    public LayerMask whatIsMush;
+    public LayerMask whatIsFlower;
     [Space(5)]
     //audio
     [Header("Audio")]
@@ -68,6 +70,7 @@ public class PlayerController : MonoBehaviour
     //Para saber si Mario es grande
     [Header("Indicador isBig")]
     public bool isBig = false;
+    public bool isOnFire = false;
     [Space(10)]
     //Sets de sprites preestablecidos
     public Sprite[] smallIdle, smallWalk, smallJump;
@@ -75,14 +78,22 @@ public class PlayerController : MonoBehaviour
     public Sprite[] bigIdle, bigWalk, bigJump;
     public Sprite[] grow;
     public Sprite[] goingDown;
+    public Sprite[] onFireGoingDown;
+    public Sprite[] onFireGrow;
+    public Sprite[] onFireIdle, onFireWalk, onFireJump;
     [Space(10)]
     //Cola de sprites a renderizar
-    private Sprite[] currentAnim;
+    public Sprite[] currentAnim;
     private int animState = -1;
     public int currentSprite;
     private bool flagGrowAnim;
+    private bool flagOnFireAnim;
     private float counterGrowAnim = 0;
+    private float counterOnFireAnim = 0;
     private bool isDown = false;
+    private bool isGoingDown = false;
+    private bool isGoingUp = false;
+    private static bool canMove = true;
 
     //Reloj que cuenta el tiempo entre frames
     private float animClock = 0.0f;
@@ -99,7 +110,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         p = this.transform; //Asignamos el transform de Mario a una variable.
-        setAnim(0, isBig); //sprite por defecto
+        setAnim(0, isBig, isOnFire); //sprite por defecto
         rb = GetComponent<Rigidbody2D>(); //Asignamos el Rigidbody del player a una variable
     }
 
@@ -115,18 +126,20 @@ public class PlayerController : MonoBehaviour
 
         if (isBig)
         {
-            isDetectedMush = Physics2D.OverlapBox(new Vector2(this.transform.position.x, this.transform.position.y), new Vector2(this.GetComponent<BoxCollider2D>().size.x, this.GetComponent<BoxCollider2D>().size.y), 0.0f, whatIsItems);
+            isDetectedMush = Physics2D.OverlapBox(new Vector2(this.transform.position.x, this.transform.position.y), new Vector2(this.GetComponent<BoxCollider2D>().size.x, this.GetComponent<BoxCollider2D>().size.y * 1.2f), 0.0f, whatIsMush);
+            isDetectedFlower = Physics2D.OverlapBox(new Vector2(this.transform.position.x, this.transform.position.y), new Vector2(this.GetComponent<BoxCollider2D>().size.x, this.GetComponent<BoxCollider2D>().size.y * 1.2f), 0.0f, whatIsFlower);
         }
         else
         {
-            isDetectedMush = Physics2D.OverlapBox(new Vector2(this.transform.position.x, this.transform.position.y - 0.5f), new Vector2(this.GetComponent<BoxCollider2D>().size.x, this.GetComponent<BoxCollider2D>().size.y), 0.0f, whatIsItems);
+            isDetectedMush = Physics2D.OverlapBox(new Vector2(this.transform.position.x, this.transform.position.y - 0.5f), new Vector2(this.GetComponent<BoxCollider2D>().size.x, this.GetComponent<BoxCollider2D>().size.y), 0.0f, whatIsMush);
+            isDetectedFlower = Physics2D.OverlapBox(new Vector2(this.transform.position.x, this.transform.position.y - 0.5f), new Vector2(this.GetComponent<BoxCollider2D>().size.x, this.GetComponent<BoxCollider2D>().size.y), 0.0f, whatIsFlower);
         }
+        
 
-
-        //isDetectedMushOnFeet = Physics2D.OverlapBox(feetPos.position, boxSizeFeet, 0.0f, whatIsItems);
+        //isDetectedMushOnFeet = Physics2D.OverlapBox(feetPos.position, boxSizeFeet, 0.0f, whatIsMush);
 
         //Salto
-        if (isDetectedGroundOnFeet && Input.GetKeyDown(KeyCode.Space))
+        if (canMove && isDetectedGroundOnFeet && Input.GetKeyDown(KeyCode.Space))
         {
             isJumping = true;
             jumpTimeCounter = jumpTime;
@@ -143,67 +156,77 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (canMove && Input.GetKeyUp(KeyCode.Space))
         {
             isJumping = false;
         }
 
         //Agacharse
-        if (isDetectedGroundOnFeet && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)) && isBig)
+
+        if (canMove && isDetectedGroundOnFeet && Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            isGoingDown = true;
+        }
+
+        if (canMove && isDetectedGroundOnFeet && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)) && isBig)
         {
             isDown = true;
         }
 
-        if (Input.GetKeyUp(KeyCode.DownArrow))
+        if (canMove && Input.GetKeyUp(KeyCode.DownArrow))
         {
             isDown = false;
+            isGoingUp = true;
         }
+
+
 
         var pos = transform.position;
 
+
+        if (canMove) { 
+            if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)) && isDetectedGroundOnFeet && (isBig || isOnFire))
+            {
+                Debug.Log("ENTRO VELOCITY 0");
+                velocity = Mathf.MoveTowards(velocity, 0, speedUp * Time.deltaTime);
+            }
+            else
+            {
+                velocity = Mathf.MoveTowards(velocity, horizontalDirection, speedUp * Time.deltaTime);
+            }
         
 
-        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow) && isDetectedGroundOnFeet && isBig)
-        {
-            velocity = Mathf.MoveTowards(velocity, 0, speedUp * Time.deltaTime);
-        }
-        else
-        {
-            velocity = Mathf.MoveTowards(velocity, horizontalDirection, speedUp * Time.deltaTime);
-        }
-            
 
 
+            //TODO: encontrar mejora de codificación (modularidad)
+            if (!isDetectedGroundOnLeft && (horizontalDirection == -1 || horizontalDirection == 0)) //direccion izq
+            {
+                pos.x += (speed * velocity) * Time.deltaTime;
+            }
+            else if (!isDetectedGroundOnRight && (horizontalDirection == 1 || horizontalDirection == 0))
+            {
+                pos.x += (speed * velocity) * Time.deltaTime;
+            }
+            else if (isDetectedGroundOnLeft && (horizontalDirection == 1 || horizontalDirection == 0))
+            {
+                pos.x += (speed * velocity) * Time.deltaTime;
+            }
+            else if (isDetectedGroundOnRight && (horizontalDirection == -1 || horizontalDirection == 0))
+            {
+                pos.x += (speed * velocity) * Time.deltaTime;
+            }
 
-        //TODO: encontrar mejora de codificación (modularidad)
-        if (!isDetectedGroundOnLeft && (horizontalDirection == -1 || horizontalDirection == 0)) //direccion izq
-        {
-            pos.x += (speed * velocity) * Time.deltaTime;
         }
-        else if (!isDetectedGroundOnRight && (horizontalDirection == 1 || horizontalDirection == 0))
-        {
-            pos.x += (speed * velocity) * Time.deltaTime;
-        }
-        else if (isDetectedGroundOnLeft && (horizontalDirection == 1 || horizontalDirection == 0))
-        {
-            pos.x += (speed * velocity) * Time.deltaTime;
-        }
-        else if (isDetectedGroundOnRight && (horizontalDirection == -1 || horizontalDirection == 0))
-        {
-            pos.x += (speed * velocity) * Time.deltaTime;
-        }
-
-
 
 
         transform.position = pos;
 
         //Direccionamiento
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (canMove && Input.GetKey(KeyCode.LeftArrow))
         {
             horizontalDirection = -1;
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (canMove && Input.GetKey(KeyCode.RightArrow))
         {
             horizontalDirection = 1;
         }
@@ -237,8 +260,9 @@ public class PlayerController : MonoBehaviour
         //Cambio de sprites para animaciones
         if ((isDetectedMush || flagGrowAnim) && counterGrowAnim < 1 && !isBig)
         {
+            canMove = false;
             flagGrowAnim = true;
-            setAnim(3, isBig);
+            setAnim(3, isBig, isOnFire);
             counterGrowAnim += Time.deltaTime;
 
             if (counterGrowAnim >= 1)
@@ -246,58 +270,57 @@ public class PlayerController : MonoBehaviour
                 flagGrowAnim = false;
                 counterGrowAnim = 0;
                 isBig = true;
-                Debug.Log("POSITIONS");
-                this.GetComponent<BoxCollider2D>().offset = new Vector2(this.GetComponent<BoxCollider2D>().offset.x, -0.02f);
-                this.GetComponent<BoxCollider2D>().size = new Vector2(this.GetComponent<BoxCollider2D>().size.x, 1.9f);
 
-                leftPos.localPosition = new Vector3(leftPos.localPosition.x, 0f);    
+                this.GetComponent<BoxCollider2D>().offset = new Vector2(this.GetComponent<BoxCollider2D>().offset.x, -0.02f);
+                this.GetComponent<BoxCollider2D>().size = new Vector2(this.GetComponent<BoxCollider2D>().size.x, 1.8f);
+
+                leftPos.localPosition = new Vector3(leftPos.localPosition.x, 0f);
                 rightPos.localPosition = new Vector3(rightPos.localPosition.x, 0f);
                 headPos.localPosition = new Vector3(headPos.localPosition.x, 1f);
 
-
                 boxSizeY = new Vector2(boxSizeY.x, 1.7f);
-
+                canMove = true;
             }
 
-        }else if (isBig && isDown) 
+        } else if ((isDetectedFlower || flagOnFireAnim) && !isOnFire)
         {
-            setAnim(4, isBig);
-        }
-        else if (velocity != 0 && (rb.velocity.y <= 0.001 && rb.velocity.y >= -0.001) && isDetectedGroundOnFeet) //Se mueve en X
-        {
-            setAnim(1, isBig);
-        }
-        else if (velocity == 0 && (rb.velocity.y <= 0.001 && rb.velocity.y >= -0.001) && isDetectedGroundOnFeet) //No se mueve en X
-        {
-            setAnim(0, isBig);
-        }
-        else if (rb.velocity.y != 0 && !isDetectedGroundOnFeet) //Se mueve en Y
-        {
-            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow) && isBig)
+            canMove = false;
+            flagOnFireAnim = true;
+            setAnim(5, isBig, isOnFire);
+            counterOnFireAnim += Time.deltaTime;
+
+            if (counterOnFireAnim >= 1)
             {
-                if (currentAnim != bigJump)
-                {
-                    setAnim(4, isBig);
-                }
-                else
-                {
-                    setAnim(2, isBig);
-                }
-                    
+                flagOnFireAnim = false;
+                counterOnFireAnim = 0;
+                isOnFire = true;
+                canMove = true;
+            }
+        }
+
+        else if (canMove && isBig && isDown)
+        {
+            setAnim(4, isBig, isOnFire);
+        }
+        else if (canMove && velocity != 0 && (rb.velocity.y <= 0.001 && rb.velocity.y >= -0.001) && isDetectedGroundOnFeet) //Se mueve en X
+        {
+            setAnim(1, isBig, isOnFire);
+        }
+        else if (canMove && velocity == 0 && (rb.velocity.y <= 0.001 && rb.velocity.y >= -0.001) && isDetectedGroundOnFeet) //No se mueve en X
+        {
+            setAnim(0, isBig, isOnFire);
+        }
+        else if (canMove && rb.velocity.y != 0 && !isDetectedGroundOnFeet) //Se mueve en Y
+        {
+            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow) && (isBig || isOnFire))
+            {
+                setAnim(4, isBig, isOnFire);
             }
             else
             {
-                if (currentAnim != goingDown)
-                {
-                    setAnim(2, isBig);
-                }
-                else
-                {
-                    setAnim(4, isBig);
-                }
-                    
+                setAnim(2, isBig, isOnFire);
             }
-                
+
         }
 
         //Cuando intenta cruzar colliders, la animación con los sprites va más lenta.
@@ -331,13 +354,13 @@ public class PlayerController : MonoBehaviour
         renderer.sprite = currentAnim[currentSprite];
 
         //Control de la velocidad y la forma de correr del player
-        if (Input.GetKey(KeyCode.E) && velocity != 0)
+        if (canMove && Input.GetKey(KeyCode.E) && velocity != 0)
         {
 
             speed = Mathf.Clamp(speed + Time.deltaTime * 6, 5.1f, maxSpeed);
         }
 
-        if (Input.GetKeyUp(KeyCode.E) || !Input.GetKey(KeyCode.E))
+        if (canMove && Input.GetKeyUp(KeyCode.E) || !Input.GetKey(KeyCode.E))
         {
 
             speed = Mathf.Clamp(speed - Time.deltaTime * 7, 5.1f, maxSpeed);    
@@ -350,32 +373,33 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        //if (isGoingDown && !isBig)
-        //{
-        //    this.GetComponent<BoxCollider2D>().offset = new Vector2(this.GetComponent<BoxCollider2D>().offset.x, -0.5f);
-        //    this.GetComponent<BoxCollider2D>().size = new Vector2(this.GetComponent<BoxCollider2D>().size.x, 0.96f);
+        if (isGoingDown && isBig)
+        {
+            this.GetComponent<BoxCollider2D>().offset = new Vector2(this.GetComponent<BoxCollider2D>().offset.x, -0.5f);
+            this.GetComponent<BoxCollider2D>().size = new Vector2(this.GetComponent<BoxCollider2D>().size.x, 0.96f);
 
-        //    leftPos.position = new Vector3(leftPos.position.x, -1.5f);
-        //    rightPos.position = new Vector3(rightPos.position.x, -1.5f);
-        //    headPos.position = new Vector3(headPos.position.x, -1f);
-
-
-        //    boxSizeY = new Vector2(boxSizeY.x, 0.4f);
-        //}
-        //else if (!isGoingDown && isBig)
-        //{
-        //    this.GetComponent<BoxCollider2D>().offset = new Vector2(this.GetComponent<BoxCollider2D>().offset.x, -0.13);
-        //    this.GetComponent<BoxCollider2D>().size = new Vector2(this.GetComponent<BoxCollider2D>().size.x, 1.7f);
-
-        //    leftPos.position = new Vector3(leftPos.position.x, -1f);
-        //    rightPos.position = new Vector3(rightPos.position.x, -1f);
-        //    headPos.position = new Vector3(headPos.position.x, -0.1f);
+            leftPos.localPosition = new Vector3(leftPos.localPosition.x, -0.5f);
+            rightPos.localPosition = new Vector3(rightPos.localPosition.x, -0.5f);
+            headPos.localPosition = new Vector3(headPos.localPosition.x, 0f);
 
 
-        //    boxSizeY = new Vector2(boxSizeY.x, 1.7f);
-        //}
+            boxSizeY = new Vector2(boxSizeY.x, 0.4f);
+        }
+        else if (isGoingUp && isBig)
+        {
+            this.GetComponent<BoxCollider2D>().offset = new Vector2(this.GetComponent<BoxCollider2D>().offset.x, -0.02f);
+            this.GetComponent<BoxCollider2D>().size = new Vector2(this.GetComponent<BoxCollider2D>().size.x, 1.9f);
+
+            leftPos.localPosition = new Vector3(leftPos.localPosition.x, 0f);
+            rightPos.localPosition = new Vector3(rightPos.localPosition.x, 0f);
+            headPos.localPosition = new Vector3(headPos.localPosition.x, 1f);
 
 
+            boxSizeY = new Vector2(boxSizeY.x, 1.7f);
+        }
+
+        isGoingUp = false;
+        isGoingDown = false;
         changeDir = false;
     }
 
@@ -397,50 +421,74 @@ public class PlayerController : MonoBehaviour
     }
 
     //Gestiona que tipo de sprite se tiene que renderizar
-    public void setAnim(int state, bool big)
+    public void setAnim(int state, bool big, bool isOnFire)
     {
         if (state != animState)
         {
             currentSprite = 0;
             animClock = 0;
+
             //Animaciones para cuando Mario NO se mueve
-            if (state == 0 && big)
+            if (state == 0 && big && !isOnFire)
             {
                 currentAnim = bigIdle;
             }
-            else if (state == 0 && !big)
+            else if (state == 0 && !big && !isOnFire)
             {
                 currentAnim = smallIdle;
             }
+            else if (state == 0 && isOnFire)
+            {
+                currentAnim = onFireIdle;
+            }
 
             //Animaciones para cuando Mario SI se mueve
-            if (state == 1 && big)
+            if (state == 1 && big && !isOnFire)
             {
                 currentAnim = bigWalk;
             }
-            else if (state == 1 && !big)
+            else if (state == 1 && !big && !isOnFire)
             {
                 currentAnim = smallWalk;
             }
+            else if (state == 1 && isOnFire)
+            {
+                currentAnim = onFireWalk;
+            }
 
-            if (state == 2 && big)
+            if (state == 2 && big && !isOnFire)
             {
                 currentAnim = bigJump;
             }
-            else if (state == 2 && !big)
+            else if (state == 2 && !big && !isOnFire)
             {
                 currentAnim = smallJump;
             }
-            
-            if(state == 3)
+            else if (state == 2 && isOnFire)
+            {
+                currentAnim = onFireJump;
+            }
+
+            if (state == 3)
             {
                 currentAnim = grow;
             }
 
-            if (state == 4)
+            if (state == 4 && !isOnFire)
             {
                 currentAnim = goingDown;
             }
+            else if (state == 4 && isOnFire)
+            {
+                currentAnim = onFireGoingDown;
+            }
+
+            if (state == 5)
+            {
+                currentAnim = onFireGrow;
+            }
+            
+
 
             animState = state;
             

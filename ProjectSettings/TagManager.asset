@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - mush
+  - flower
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - 
   - 
   - Ground
-  - Items
-  - 
+  - Mush
+  - Flower
   - 
   - 
   - 
