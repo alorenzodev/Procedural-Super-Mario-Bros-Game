@@ -41,8 +41,11 @@ public class MapManager : MonoBehaviour
     public AudioSource bumpAtHit;
     public AudioSource coinObtain;
     public AudioSource yoshiCoinObtain;
+    public AudioSource itemEmergeFromBlock;
+    public AudioSource growUpClip;
 
     private GameObject goMush;
+    public bool isDetectAnythingHitMush;
 
     //[Space(10)]
 
@@ -76,15 +79,24 @@ public class MapManager : MonoBehaviour
 
         if (playerController.isDetectedGroundOnHead && flagForHeadHit)
         {
+            Vector3Int gridUpperPlayerPosition;
+            if (playerController.isBig)
+            {
+                gridUpperPlayerPosition = foreGround.WorldToCell(playerController.transform.position + new Vector3(0, 1.5f, 0));
+            }
+            else
+            {
+                gridUpperPlayerPosition = foreGround.WorldToCell(playerController.transform.position + new Vector3(0, 0.5f, 0));
+            }
+
             
-            Vector3Int gridUpperPlayerPosition = foreGround.WorldToCell(playerController.transform.position + new Vector3(0, 0.5f, 0));
 
             TileBase hitTileBase = foreGround.GetTile(gridUpperPlayerPosition);
 
             if (hitTileBase && !(playerController.isDetectedGroundOnHead && playerController.isDetectedGroundOnFeet))
             {
                 bumpAtHit.Play();
-                //print("En la posicion de grid" + gridUpperPlayerPosition + "existe el siguiente tile: [" + hitTileBase + "]. En el TileMap: " + map.name);
+                print("En la posicion de grid" + gridUpperPlayerPosition + "existe el siguiente tile: [" + hitTileBase + "]. En el TileMap: " + foreGround.name);
 
                 if (hitTileBase.name.Equals("SurpriseBox_anim"))
                 {
@@ -109,7 +121,7 @@ public class MapManager : MonoBehaviour
             {
                 bumpAtHit.Play();
                 playerController.setAnim(2, playerController.isBig);
-                //print("En la posicion de grid" + gridUpperPlayerPosition + "existe el siguiente tile: [" + hitTileBase + "]. En el TileMap: " + map.name);
+                print("En la posicion de grid" + gridUpperPlayerPosition + "existe el siguiente tile: [" + hitTileBase + "]. En el TileMap: " + foreGround.name);
                 if (hitTileBase.name.Equals("SurpriseBox_anim"))
                 {
                     blockHeadHitAnim(hitTileBase, voidTileBase, gridUpperPlayerPosition);
@@ -132,7 +144,7 @@ public class MapManager : MonoBehaviour
             {
                 gridUpperPlayerPosition = foreGround.WorldToCell(playerController.transform.position - new Vector3(0, 0.5f, 0));
                 hitTileBase = foreGround.GetTile(gridUpperPlayerPosition);
-                //print("En la posicion de grid" + gridUpperPlayerPosition + "existe el siguiente tile: [" + hitTileBase + "]. En el TileMap: " + map.name);
+                print("En la posicion de grid" + gridUpperPlayerPosition + "existe el siguiente tile: [" + hitTileBase + "]. En el TileMap: " + foreGround.name);
 
                 if (hitTileBase && hitTileBase.name.Equals("SurpriseBox_anim"))
                 {
@@ -164,19 +176,60 @@ public class MapManager : MonoBehaviour
         }
 
 
-        Vector3Int playerPosition = detail.WorldToCell(playerController.transform.position);
-        TileBase tileBaseCoin = detail.GetTile(playerPosition);
+        Vector3Int playerPosition;
 
-        if (tileBaseCoin && tileBaseCoin.name.Equals("Coin_anim"))
+        if (playerController.isBig)
         {
-            print("En la posicion de grid" + playerPosition + "existe el siguiente tile: [" + tileBaseCoin + "]. En el TileMap: " + detail.name);
-            coinObtain.Play();
-            detail.SetTile(playerPosition, voidTileBase);
+            playerPosition = detail.WorldToCell(playerController.transform.position);
+
+            TileBase tileBaseCoin = detail.GetTile(playerPosition);
+
+            if (tileBaseCoin && tileBaseCoin.name.Equals("Coin_anim"))
+            {
+                print("En la posicion de grid" + playerPosition + "existe el siguiente tile: [" + tileBaseCoin + "]. En el TileMap: " + detail.name);
+                coinObtain.Play();
+                detail.SetTile(playerPosition, voidTileBase);
+            }
+
+            playerPosition = detail.WorldToCell(playerController.transform.position + new Vector3(0, 0.5f));
+            tileBaseCoin = detail.GetTile(playerPosition);
+
+            if (tileBaseCoin && tileBaseCoin.name.Equals("Coin_anim"))
+            {
+                print("En la posicion de grid" + playerPosition + "existe el siguiente tile: [" + tileBaseCoin + "]. En el TileMap: " + detail.name);
+                coinObtain.Play();
+                detail.SetTile(playerPosition, voidTileBase);
+            }
+
         }
+        else
+        {
+            playerPosition = detail.WorldToCell(playerController.transform.position);
+
+            TileBase tileBaseCoin = detail.GetTile(playerPosition);
+
+            if (tileBaseCoin && tileBaseCoin.name.Equals("Coin_anim"))
+            {
+                print("En la posicion de grid" + playerPosition + "existe el siguiente tile: [" + tileBaseCoin + "]. En el TileMap: " + detail.name);
+                coinObtain.Play();
+                detail.SetTile(playerPosition, voidTileBase);
+            }
+        }
+
+        
 
         if (playerController.isDetectedMush && GameObject.FindGameObjectWithTag("mush"))
         {
             Destroy(GameObject.FindGameObjectWithTag("mush"));
+            if (!playerController.isBig)
+            {
+                growUpClip.Play();
+            }
+            else
+            {
+                yoshiCoinObtain.Play();
+            }
+                
         }
 
     }
@@ -314,12 +367,27 @@ public class MapManager : MonoBehaviour
         return;
     }
 
+    IEnumerator growUpBlockAndAnim()
+    {
+
+        while (true)
+        {
+            UnityEngine.WaitForSeconds waitTime = new WaitForSeconds(3f);
+            playerController.growUp();
+            
+            yield return waitTime;
+        }
+    }
+
     IEnumerator mushMovementAndDetect(GameObject goSpriteItemTile, bool flagExistingMush)
     {
+        var mushDir = 1;
+
+        itemEmergeFromBlock.Play();
         //movimiento en Y para salir de la surprise box
         while (true)
         {
-            goSpriteItemTile.transform.position = new Vector2(goSpriteItemTile.transform.position.x, goSpriteItemTile.transform.position.y + (bounceSpeed/2) * Time.deltaTime);
+            goSpriteItemTile.transform.position = new Vector2(goSpriteItemTile.transform.position.x, goSpriteItemTile.transform.position.y + (bounceSpeed/2.2f) * Time.deltaTime);
 
             if (goSpriteItemTile.transform.position.y.CompareTo((blockMushOriginalPos + new Vector2(0, bounceHeight * 1.8f)).y) >= 0)
             {
@@ -327,10 +395,20 @@ public class MapManager : MonoBehaviour
                 goSpriteItemTile.AddComponent<BoxCollider2D>();
 
                 goSpriteItemTile.GetComponent<Rigidbody2D>().freezeRotation = true;
+                goSpriteItemTile.GetComponent<Rigidbody2D>().gravityScale = 3f;
+                goSpriteItemTile.GetComponent<Rigidbody2D>().mass = 10;
 
                 if (flagExistingMush)
                 {
+                    UnityEngine.WaitForSeconds waitTime = new WaitForSeconds(0.15f);
+
+                    yield return waitTime;
                     Destroy(goSpriteItemTile);
+                }
+
+                if (playerController.transform.position.x.CompareTo(goSpriteItemTile.transform.position.x) >= 0)
+                {
+                    mushDir = -1;
                 }
 
                 break;
@@ -339,16 +417,32 @@ public class MapManager : MonoBehaviour
             yield return null;
         }
 
-        //cambiar condicion para que se mueva, si detecta colision, cambie de direccion, y cuando detecte al personaje, desaparezca.
-        //while (true)
-        //{
+
+        //cambiar condicion para que se mueva, si detecta colision, cambie de direccion.
+        while (true)
+        {
+            if (!goSpriteItemTile.Equals(null))
+            {
+                isDetectAnythingHitMush = Physics2D.OverlapBox(new Vector2(goSpriteItemTile.transform.position.x, goSpriteItemTile.transform.position.y), new Vector2(goSpriteItemTile.GetComponent<BoxCollider2D>().size.x * 0.9f, goSpriteItemTile.GetComponent<BoxCollider2D>().size.y / 2.5f), 0.0f, playerController.whatIsGround);
+                goSpriteItemTile.transform.position = new Vector2(goSpriteItemTile.transform.position.x + (bounceSpeed / 1.5f) * Time.deltaTime * mushDir, goSpriteItemTile.transform.position.y);
+            }
+
+            if (!goSpriteItemTile.Equals(null) && isDetectAnythingHitMush)
+            {
+                if (mushDir == 1)
+                {
+                    mushDir = -1;
+                }
+                else
+                {
+                    mushDir = 1;
+                }
+            }
 
 
 
-        //    yield return null;
-        //}
-
-        yield return null;
+            yield return null;
+        }
     }
 
     IEnumerator yoshiCoinBlockAnim(GameObject goSpriteItemTile)
