@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
     public Sprite[] onFireGoingDown;
     public Sprite[] onFireGrow;
     public Sprite[] onFireIdle, onFireWalk, onFireJump;
+    public Sprite[] onFireBall;
     [Space(10)]
     //Cola de sprites a renderizar
     public Sprite[] currentAnim;
@@ -88,12 +89,16 @@ public class PlayerController : MonoBehaviour
     public int currentSprite;
     private bool flagGrowAnim;
     private bool flagOnFireAnim;
+    private bool flagShootingFireBall;
     private float counterGrowAnim = 0;
     private float counterOnFireAnim = 0;
+    private float counterShootingFireBall = 0;
     private bool isDown = false;
     private bool isGoingDown = false;
     private bool isGoingUp = false;
     private static bool canMove = true;
+    public bool shootingFireBall = false;
+
 
     //Reloj que cuenta el tiempo entre frames
     private float animClock = 0.0f;
@@ -179,6 +184,11 @@ public class PlayerController : MonoBehaviour
             isGoingUp = true;
         }
 
+
+        if (isBig && isOnFire && Input.GetKeyDown(KeyCode.R))
+        {
+            shootingFireBall = true;
+        }
 
 
         var pos = transform.position;
@@ -297,7 +307,19 @@ public class PlayerController : MonoBehaviour
                 canMove = true;
             }
         }
+        else if (canMove && (shootingFireBall || flagShootingFireBall))
+        {
+            flagShootingFireBall = true;
+            setAnim(6, isBig, isOnFire);
+            counterShootingFireBall += Time.deltaTime;
 
+            if (counterShootingFireBall >= 0.08f)
+            {
+                flagShootingFireBall = false;
+                counterShootingFireBall = 0;
+            }
+
+        }
         else if (canMove && isBig && isDown)
         {
             setAnim(4, isBig, isOnFire);
@@ -331,7 +353,7 @@ public class PlayerController : MonoBehaviour
         {
             //reloj de animaciones
             animClock += (Time.deltaTime * Mathf.Abs(velocity) * (speed * 3)) / 3;
-        }else if (isDetectedMush || flagGrowAnim)
+        }else if (isDetectedMush || flagGrowAnim || isDetectedFlower || flagOnFireAnim)
         {
             animClock += Time.deltaTime * 13;
         }
@@ -398,6 +420,7 @@ public class PlayerController : MonoBehaviour
             boxSizeY = new Vector2(boxSizeY.x, 1.7f);
         }
 
+        shootingFireBall = false;
         isGoingUp = false;
         isGoingDown = false;
         changeDir = false;
@@ -487,7 +510,12 @@ public class PlayerController : MonoBehaviour
             {
                 currentAnim = onFireGrow;
             }
-            
+
+            if (state == 6 && isOnFire)
+            {
+                currentAnim = onFireBall;
+            }
+
 
 
             animState = state;

@@ -44,7 +44,8 @@ public class MapManager : MonoBehaviour
     public AudioSource itemEmergeFromBlock;
     public AudioSource growUpClip;
     public AudioSource brickBreakClip;
-
+    public AudioSource fireBallSpawnClip;
+    
     private GameObject goMushOrFlower;
     public bool isDetectAnythingHitMush;
 
@@ -237,9 +238,129 @@ public class MapManager : MonoBehaviour
         if (playerController.isDetectedFlower && GameObject.FindGameObjectWithTag("flower"))
         {
             Destroy(GameObject.FindGameObjectWithTag("flower"));
-            growUpClip.Play();
+
+            if (!playerController.isOnFire)
+            {
+                growUpClip.Play();
+            }
+            else
+            {
+                yoshiCoinObtain.Play();
+            }
         }
 
+        if (Input.GetKeyDown(KeyCode.R) && playerController.isBig && playerController.isOnFire)
+        {
+            fireBallSpawnClip.Play();
+            GameObject fireBall = new GameObject("fireBall");
+            Tile fireBallTile = Resources.Load<Tile>("Tiles/fireBall") as Tile;
+            Sprite spriteItemTile = fireBallTile.sprite;
+
+            if (playerController.renderer.flipX)
+            {
+                fireBall.transform.position = playerController.transform.position + new Vector3(-0.5f, 0.125f, 0);
+            }
+            else
+            {
+                fireBall.transform.position = playerController.transform.position + new Vector3(0.5f, 0.125f, 0);
+            }
+
+            fireBall.AddComponent<SpriteRenderer>();
+            fireBall.AddComponent<Rigidbody2D>();
+            fireBall.AddComponent<BoxCollider2D>();
+
+            fireBall.GetComponent<SpriteRenderer>().sprite = spriteItemTile;
+            fireBall.GetComponent<Rigidbody2D>().gravityScale = 6;
+            fireBall.GetComponent<BoxCollider2D>().size = new Vector2(0.5f, 0.5f);
+            //fireBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(playerController.renderer.flipX ? -6 : 6, 0), ForceMode2D.Impulse);
+
+            fireBall.GetComponent<Rigidbody2D>().velocity = Vector2.down * 10;
+            StartCoroutine(fireBallAnim(fireBall, playerController.renderer.flipX ? -1 : 1));
+        }
+
+    }
+
+    IEnumerator fireBallAnim(GameObject fireBall, int fireBallDir)
+    {
+        var isDetectedGroundOnFeet = false;
+        var isDetectedGroundOnLeft = false;
+        var isDetectedGroundOnRight = false;
+
+        while (true)
+        {
+            if (fireBall)
+            {
+                fireBall.transform.position = new Vector3(fireBall.transform.position.x + 20 * Time.deltaTime * fireBallDir, fireBall.transform.position.y, 0);
+
+                isDetectedGroundOnFeet = Physics2D.OverlapBox(new Vector2(fireBall.transform.position.x, fireBall.transform.position.y - 0.25f), new Vector2(fireBall.GetComponent<BoxCollider2D>().size.x * 0.8f, fireBall.GetComponent<BoxCollider2D>().size.y * 0.1f), 0.0f, playerController.whatIsGround);
+                isDetectedGroundOnLeft = Physics2D.OverlapBox(new Vector2(fireBall.transform.position.x - 0.25f, fireBall.transform.position.y + 0.25f), new Vector2(fireBall.GetComponent<BoxCollider2D>().size.x * 0.1f, fireBall.GetComponent<BoxCollider2D>().size.y * 0.1f), 0.0f, playerController.whatIsGround);
+                isDetectedGroundOnRight = Physics2D.OverlapBox(new Vector2(fireBall.transform.position.x + 0.25f, fireBall.transform.position.y + 0.25f), new Vector2(fireBall.GetComponent<BoxCollider2D>().size.x * 0.1f, fireBall.GetComponent<BoxCollider2D>().size.y * 0.1f), 0.0f, playerController.whatIsGround);
+
+                if (isDetectedGroundOnFeet)
+                {
+                    fireBall.GetComponent<Rigidbody2D>().velocity = Vector2.up * 10;
+                }
+
+                if (isDetectedGroundOnLeft || isDetectedGroundOnRight)
+                {
+                    bumpAtHit.Play();
+                    
+                    StartCoroutine(fireBallExplosionAnim(new Vector3(fireBall.transform.position.x, fireBall.transform.position.y, 0)));
+                    Destroy(fireBall);
+                    break;
+                }
+            }
+            
+
+            yield return null;
+        }
+        
+    }
+
+    IEnumerator fireBallExplosionAnim(Vector3 fireBallPos)
+    {
+        
+        string[] explosionStr = { "Tiles/items_objects_NPC_spritesheet_287", "Tiles/items_objects_NPC_spritesheet_302", "Tiles/items_objects_NPC_spritesheet_327" };
+
+        GameObject goExplosion = new GameObject("Explosion");
+
+        goExplosion.transform.position = fireBallPos;
+
+        goExplosion.AddComponent<SpriteRenderer>();
+
+        goExplosion.GetComponent<SpriteRenderer>().sortingLayerName = "Foreground";
+        goExplosion.GetComponent<SpriteRenderer>().sortingOrder = 2;
+
+        goExplosion.layer = 8;
+
+        var t = 0f;
+        var index = 0;
+
+        UnityEngine.WaitForSeconds waitTime = new WaitForSeconds(0.05f);
+
+        while (true)
+        {
+            t += Time.deltaTime;
+
+            if (index == explosionStr.Length - 1)
+            {
+                Destroy(goExplosion);
+                break;
+            }
+
+            Tile explosionTile = Resources.Load<Tile>(explosionStr[index]) as Tile;
+            Sprite spriteExplosionTile = explosionTile.sprite;
+
+            Debug.Log("explosionStr: " + explosionStr[index]);
+
+            goExplosion.GetComponent<SpriteRenderer>().sprite = spriteExplosionTile;
+            index++;
+
+
+            yield return waitTime;
+        }
+
+        
     }
 
     private void blockDestroyHitAnim(TileBase hitTileBase, TileBase voidTileBase, Vector3Int gridPosition)
@@ -536,6 +657,7 @@ public class MapManager : MonoBehaviour
 
     IEnumerator flowerMovementAndDetect(GameObject goSpriteItemTile, bool flagExistingFlower)
     {
+        itemEmergeFromBlock.Play();
         while (true)
         {
             goSpriteItemTile.transform.position = new Vector2(goMushOrFlower.transform.position.x, goSpriteItemTile.transform.position.y + (bounceSpeed / 2.2f) * Time.deltaTime);
@@ -554,6 +676,7 @@ public class MapManager : MonoBehaviour
                     UnityEngine.WaitForSeconds waitTime = new WaitForSeconds(0.15f);
 
                     yield return waitTime;
+                    yoshiCoinObtain.Play();
                     Destroy(goSpriteItemTile);
                 }
 
