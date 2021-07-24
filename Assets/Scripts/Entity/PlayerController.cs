@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     public bool isDetectedMush;
     public bool isDetectedMushOnFeet;
     public bool isDetectedFlower;
+    public bool isDetectedStar;
 
     [Space(5)]
     //objetos detectores
@@ -55,6 +56,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
     public LayerMask whatIsMush;
     public LayerMask whatIsFlower;
+    public LayerMask whatIsStar;
     [Space(5)]
     //audio
     [Header("Audio")]
@@ -71,6 +73,7 @@ public class PlayerController : MonoBehaviour
     [Header("Indicador isBig")]
     public bool isBig = false;
     public bool isOnFire = false;
+    public bool isStar = false;
     [Space(10)]
     //Sets de sprites preestablecidos
     public Sprite[] smallIdle, smallWalk, smallJump;
@@ -139,7 +142,10 @@ public class PlayerController : MonoBehaviour
             isDetectedMush = Physics2D.OverlapBox(new Vector2(this.transform.position.x, this.transform.position.y - 0.5f), new Vector2(this.GetComponent<BoxCollider2D>().size.x, this.GetComponent<BoxCollider2D>().size.y), 0.0f, whatIsMush);
             isDetectedFlower = Physics2D.OverlapBox(new Vector2(this.transform.position.x, this.transform.position.y - 0.5f), new Vector2(this.GetComponent<BoxCollider2D>().size.x, this.GetComponent<BoxCollider2D>().size.y), 0.0f, whatIsFlower);
         }
-        
+
+        isDetectedStar = Physics2D.OverlapBox(new Vector2(this.transform.position.x, this.transform.position.y), new Vector2(this.GetComponent<BoxCollider2D>().size.x, this.GetComponent<BoxCollider2D>().size.y * 1.2f), 0.0f, whatIsStar);
+
+
 
         //isDetectedMushOnFeet = Physics2D.OverlapBox(feetPos.position, boxSizeFeet, 0.0f, whatIsMush);
 
@@ -265,7 +271,10 @@ public class PlayerController : MonoBehaviour
             renderer.flipX = true;
         }
 
-
+        if (isDetectedStar)
+        {
+            isStar = true;
+        }
 
         //Cambio de sprites para animaciones
         if ((isDetectedMush || flagGrowAnim) && counterGrowAnim < 1 && !isBig)
@@ -313,7 +322,7 @@ public class PlayerController : MonoBehaviour
             setAnim(6, isBig, isOnFire);
             counterShootingFireBall += Time.deltaTime;
 
-            if (counterShootingFireBall >= 0.08f)
+            if (counterShootingFireBall >= 0.06f)
             {
                 flagShootingFireBall = false;
                 counterShootingFireBall = 0;

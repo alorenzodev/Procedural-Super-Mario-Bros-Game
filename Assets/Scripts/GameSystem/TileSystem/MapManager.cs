@@ -19,6 +19,7 @@ public class MapManager : MonoBehaviour
     private TileBase voidTileBase;
 
     private PlayerController playerController;
+    private PunctuationController punctController;
 
     [SerializeField]
     private List<TileData> tileDatas;
@@ -36,6 +37,7 @@ public class MapManager : MonoBehaviour
     private Vector2 blockCoinOriginalPos;
     private Vector2 blockYoshiCoinOriginalPos;
     private Vector2 blockMushOriginalPos;
+    private Vector2 blockStarOriginalPos;
 
     [Header("Audio")]
     public AudioSource bumpAtHit;
@@ -45,10 +47,12 @@ public class MapManager : MonoBehaviour
     public AudioSource growUpClip;
     public AudioSource brickBreakClip;
     public AudioSource fireBallSpawnClip;
-    
-    private GameObject goMushOrFlower;
-    public bool isDetectAnythingHitMush;
+    public AudioSource starTheme;
 
+    private GameObject goMushOrFlower;
+    private GameObject goStar;
+    public bool isDetectAnythingHitMush;
+    
     //[Space(10)]
 
 
@@ -69,7 +73,8 @@ public class MapManager : MonoBehaviour
     private void Start()
     {
         playerController = player.GetComponent<PlayerController>();
-
+        punctController = player.GetComponent<PunctuationController>();
+        
         UsedSurpriseBox = Resources.Load<Tile>("Tiles/overworld_tileset_46") as Tile;
 
         voidTileBase = ScriptableObject.CreateInstance<Tile>();
@@ -249,11 +254,21 @@ public class MapManager : MonoBehaviour
             }
         }
 
+        if (playerController.isDetectedStar && GameObject.FindGameObjectWithTag("star"))
+        {
+            Destroy(GameObject.FindGameObjectWithTag("star"));
+            
+
+            StartCoroutine(starMusic());
+        }
+
+
+
         if (Input.GetKeyDown(KeyCode.R) && playerController.isBig && playerController.isOnFire)
         {
             fireBallSpawnClip.Play();
             GameObject fireBall = new GameObject("fireBall");
-            Tile fireBallTile = Resources.Load<Tile>("Tiles/fireBall") as Tile;
+            Tile fireBallTile = Resources.Load<Tile>("Tiles/fireBall_0") as Tile;
             Sprite spriteItemTile = fireBallTile.sprite;
 
             if (playerController.renderer.flipX)
@@ -278,91 +293,11 @@ public class MapManager : MonoBehaviour
             StartCoroutine(fireBallAnim(fireBall, playerController.renderer.flipX ? -1 : 1));
         }
 
+
+
     }
 
-    IEnumerator fireBallAnim(GameObject fireBall, int fireBallDir)
-    {
-        var isDetectedGroundOnFeet = false;
-        var isDetectedGroundOnLeft = false;
-        var isDetectedGroundOnRight = false;
-
-        while (true)
-        {
-            if (fireBall)
-            {
-                fireBall.transform.position = new Vector3(fireBall.transform.position.x + 20 * Time.deltaTime * fireBallDir, fireBall.transform.position.y, 0);
-
-                isDetectedGroundOnFeet = Physics2D.OverlapBox(new Vector2(fireBall.transform.position.x, fireBall.transform.position.y - 0.25f), new Vector2(fireBall.GetComponent<BoxCollider2D>().size.x * 0.8f, fireBall.GetComponent<BoxCollider2D>().size.y * 0.1f), 0.0f, playerController.whatIsGround);
-                isDetectedGroundOnLeft = Physics2D.OverlapBox(new Vector2(fireBall.transform.position.x - 0.25f, fireBall.transform.position.y + 0.25f), new Vector2(fireBall.GetComponent<BoxCollider2D>().size.x * 0.1f, fireBall.GetComponent<BoxCollider2D>().size.y * 0.1f), 0.0f, playerController.whatIsGround);
-                isDetectedGroundOnRight = Physics2D.OverlapBox(new Vector2(fireBall.transform.position.x + 0.25f, fireBall.transform.position.y + 0.25f), new Vector2(fireBall.GetComponent<BoxCollider2D>().size.x * 0.1f, fireBall.GetComponent<BoxCollider2D>().size.y * 0.1f), 0.0f, playerController.whatIsGround);
-
-                if (isDetectedGroundOnFeet)
-                {
-                    fireBall.GetComponent<Rigidbody2D>().velocity = Vector2.up * 10;
-                }
-
-                if (isDetectedGroundOnLeft || isDetectedGroundOnRight)
-                {
-                    bumpAtHit.Play();
-                    
-                    StartCoroutine(fireBallExplosionAnim(new Vector3(fireBall.transform.position.x, fireBall.transform.position.y, 0)));
-                    Destroy(fireBall);
-                    break;
-                }
-            }
-            
-
-            yield return null;
-        }
-        
-    }
-
-    IEnumerator fireBallExplosionAnim(Vector3 fireBallPos)
-    {
-        
-        string[] explosionStr = { "Tiles/items_objects_NPC_spritesheet_287", "Tiles/items_objects_NPC_spritesheet_302", "Tiles/items_objects_NPC_spritesheet_327" };
-
-        GameObject goExplosion = new GameObject("Explosion");
-
-        goExplosion.transform.position = fireBallPos;
-
-        goExplosion.AddComponent<SpriteRenderer>();
-
-        goExplosion.GetComponent<SpriteRenderer>().sortingLayerName = "Foreground";
-        goExplosion.GetComponent<SpriteRenderer>().sortingOrder = 2;
-
-        goExplosion.layer = 8;
-
-        var t = 0f;
-        var index = 0;
-
-        UnityEngine.WaitForSeconds waitTime = new WaitForSeconds(0.05f);
-
-        while (true)
-        {
-            t += Time.deltaTime;
-
-            if (index == explosionStr.Length - 1)
-            {
-                Destroy(goExplosion);
-                break;
-            }
-
-            Tile explosionTile = Resources.Load<Tile>(explosionStr[index]) as Tile;
-            Sprite spriteExplosionTile = explosionTile.sprite;
-
-            Debug.Log("explosionStr: " + explosionStr[index]);
-
-            goExplosion.GetComponent<SpriteRenderer>().sprite = spriteExplosionTile;
-            index++;
-
-
-            yield return waitTime;
-        }
-
-        
-    }
-
+    
     private void blockDestroyHitAnim(TileBase hitTileBase, TileBase voidTileBase, Vector3Int gridPosition)
     {
         brickBreakClip.Play();
@@ -447,27 +382,61 @@ public class MapManager : MonoBehaviour
     {
         var random = UnityEngine.Random.Range(0f, 1f);
 
-        if (random <= 0.02f)
+        //Capar posibilidad de estrellas a 1 mientras se tiene, y mientras haya una estrella en juego.
+        if (!starTheme.isPlaying && !playerController.isStar && !GameObject.Find("star"))
         {
-            starItem(gridPosition);
-        }
-        else if (random <= 1f)
-        {
-            mushItem(gridPosition);
+            if (random <= 1f)
+            {
+                starItem(gridPosition);
+                punctController.hitObject = 1;
+            }
+            else if (random <= 1f)
+            {
+                mushItem(gridPosition);
+                punctController.hitObject = 2;
+            }
         }
         else if (random <= 0.2f)
         {
             yoshiCoinItem(gridPosition);
+            punctController.hitObject = 3;
         }
         else if (random <= 1)
         {
             coinItem(gridPosition);
+            punctController.hitObject = 4;
+        }
+    }
+
+    private void starItem(Vector3Int gridPosition)
+    {
+        bool flagExistingStar = false;
+
+        if (GameObject.Find("star"))
+        {
+            flagExistingStar = true;
         }
 
+        goStar = new GameObject("star");
+        AnimatedTile starItem = Resources.Load<AnimatedTile>("Animations/Tiles/Star_anim") as AnimatedTile;
+        Sprite[] spriteItemTile = starItem.m_AnimatedSprites;
 
+        goStar.AddComponent<SpriteRenderer>();
 
+        goStar.transform.position = foreGround.CellToWorld(gridPosition) + new Vector3(0.5f, 0.7f, 0);
 
+        blockMushOriginalPos = goStar.transform.position;
 
+        goStar.GetComponent<SpriteRenderer>().sprite = spriteItemTile[0];
+        goStar.GetComponent<SpriteRenderer>().sortingLayerName = "Foreground";
+        goStar.GetComponent<SpriteRenderer>().sortingOrder = 7;
+
+        StartCoroutine(starMovementAndDetect(goStar, flagExistingStar));
+        StartCoroutine(starAnim(goStar, spriteItemTile));
+        goStar.tag = "star";
+        goStar.layer = 7;
+
+        return;
     }
 
     private void mushItem(Vector3Int gridPosition)
@@ -577,13 +546,6 @@ public class MapManager : MonoBehaviour
         StartCoroutine(yoshiCoinBlockAnim(goSpriteItemTile));
     }
 
-
-
-    private void starItem(Vector3Int gridPosition)
-    {
-        return;
-    }
-
     IEnumerator growUpBlockAndAnim()
     {
 
@@ -655,12 +617,47 @@ public class MapManager : MonoBehaviour
 
     }
 
+    IEnumerator starAnim(GameObject goMushOrStar, Sprite[] spriteItemTile)
+    {
+        var t = 0f;
+        var indexAnim = 0;
+        UnityEngine.WaitForSeconds waitTime = new WaitForSeconds(0.05f);
+
+        while (true)
+        {
+            t += Time.deltaTime;
+
+            if (goMushOrStar)
+            {
+                goMushOrStar.GetComponent<SpriteRenderer>().sprite = spriteItemTile[indexAnim];
+
+                if (indexAnim == spriteItemTile.Length - 1)
+                {
+                    indexAnim = 0;
+                }
+                else
+                {
+                    indexAnim++;
+                }
+            }
+            else
+            {
+                break;
+            }
+
+
+
+            yield return waitTime;
+        }
+
+    }
+
     IEnumerator flowerMovementAndDetect(GameObject goSpriteItemTile, bool flagExistingFlower)
     {
         itemEmergeFromBlock.Play();
         while (true)
         {
-            goSpriteItemTile.transform.position = new Vector2(goMushOrFlower.transform.position.x, goSpriteItemTile.transform.position.y + (bounceSpeed / 2.2f) * Time.deltaTime);
+            goSpriteItemTile.transform.position = new Vector2(goSpriteItemTile.transform.position.x, goSpriteItemTile.transform.position.y + (bounceSpeed / 2.2f) * Time.deltaTime);
 
             if (goSpriteItemTile.transform.position.y.CompareTo((blockMushOriginalPos + new Vector2(0, bounceHeight * 1.8f)).y) >= 0)
             {
@@ -689,6 +686,227 @@ public class MapManager : MonoBehaviour
 
         yield return null;
     }
+
+    IEnumerator starMovementAndDetect(GameObject goSpriteItemTile, bool flagExistingStar)
+    {
+        itemEmergeFromBlock.Play();
+        var starDir = 1;
+        while (true)
+        {
+            goSpriteItemTile.transform.position = new Vector2(goSpriteItemTile.transform.position.x, goSpriteItemTile.transform.position.y + (bounceSpeed / 2.2f) * Time.deltaTime);
+
+            if (goSpriteItemTile.transform.position.y.CompareTo((blockMushOriginalPos + new Vector2(0, bounceHeight * 1.8f)).y) >= 0)
+            {
+                goSpriteItemTile.AddComponent<Rigidbody2D>();
+                goSpriteItemTile.AddComponent<BoxCollider2D>();
+
+                goSpriteItemTile.GetComponent<Rigidbody2D>().freezeRotation = true;
+                goSpriteItemTile.GetComponent<Rigidbody2D>().gravityScale = 3f;
+                goSpriteItemTile.GetComponent<Rigidbody2D>().mass = 10;
+
+                if (flagExistingStar)
+                {
+                    UnityEngine.WaitForSeconds waitTime = new WaitForSeconds(0.15f);
+
+                    yield return waitTime;
+                    yoshiCoinObtain.Play();
+                    Destroy(goSpriteItemTile);
+                }
+
+                break;
+            }
+
+            yield return null;
+        }
+
+        while (true)
+        {
+            var isDetectedGroundOnFeet = false;
+            var isDetectedGroundOnLeft = false;
+            var isDetectedGroundOnRight = false;
+
+            var index = 1;
+            var t = 0f;
+
+            string[] starAnimRes = { "Tiles/overworld_tileset_13", "Tiles/overworld_tileset_14", "Tiles/overworld_tileset_15", "Tiles/overworld_tileset_16" };
+
+            if (goSpriteItemTile)
+            {
+                t += Time.deltaTime;
+                goSpriteItemTile.transform.position = new Vector3(goSpriteItemTile.transform.position.x + (bounceSpeed / 1.5f) * Time.deltaTime * starDir, goSpriteItemTile.transform.position.y, 0);
+
+                isDetectedGroundOnFeet = Physics2D.OverlapBox(new Vector2(goSpriteItemTile.transform.position.x, goSpriteItemTile.transform.position.y - 0.5f), new Vector2(goSpriteItemTile.GetComponent<BoxCollider2D>().size.x * 0.8f, goSpriteItemTile.GetComponent<BoxCollider2D>().size.y * 0.1f), 0.0f, playerController.whatIsGround);
+                isDetectedGroundOnLeft = Physics2D.OverlapBox(new Vector2(goSpriteItemTile.transform.position.x - 0.5f, goSpriteItemTile.transform.position.y + 0.3f), new Vector2(goSpriteItemTile.GetComponent<BoxCollider2D>().size.x * 0.1f, goSpriteItemTile.GetComponent<BoxCollider2D>().size.y * 0.5f), 0.0f, playerController.whatIsGround);
+                isDetectedGroundOnRight = Physics2D.OverlapBox(new Vector2(goSpriteItemTile.transform.position.x + 0.5f, goSpriteItemTile.transform.position.y + 0.3f), new Vector2(goSpriteItemTile.GetComponent<BoxCollider2D>().size.x * 0.1f, goSpriteItemTile.GetComponent<BoxCollider2D>().size.y * 0.5f), 0.0f, playerController.whatIsGround);
+
+
+
+                if (isDetectedGroundOnFeet)
+                {
+                    goSpriteItemTile.GetComponent<Rigidbody2D>().velocity = Vector2.up * 13;
+                }
+
+                if (isDetectedGroundOnLeft)
+                {
+                    starDir = 1;
+                }
+
+                if (isDetectedGroundOnRight)
+                {
+                    starDir = -1;
+                }
+
+                if (t >= 0.1f)
+                {
+                    Sprite fireBallSprite = Resources.Load<Tile>(starAnimRes[index]).sprite as Sprite;
+                    goSpriteItemTile.GetComponent<SpriteRenderer>().sprite = fireBallSprite;
+
+
+                    if (index == starAnimRes.Length - 1)
+                    {
+                        index = 0;
+                    }
+                    else
+                    {
+                        index++;
+                    }
+
+                    t = 0f;
+
+                }
+                if (goSpriteItemTile && Vector2.Distance(playerController.transform.position, goSpriteItemTile.transform.position) > 100)
+                {
+                    Destroy(goSpriteItemTile);
+                    break;
+                }
+            }
+
+            yield return null;
+        }
+
+
+
+
+            yield return null;
+    }
+
+    IEnumerator fireBallAnim(GameObject fireBall, int fireBallDir)
+    {
+        var isDetectedGroundOnFeet = false;
+        var isDetectedGroundOnLeft = false;
+        var isDetectedGroundOnRight = false;
+
+        var index = 1;
+        var t = 0f;
+
+        string[] fireBallAnimRes = { "Tiles/fireBall_0", "Tiles/fireBall_1", "Tiles/fireBall_2", "Tiles/fireBall_3" };
+
+
+        while (true)
+        {
+
+            if (fireBall)
+            {
+                t += Time.deltaTime;
+                fireBall.transform.position = new Vector3(fireBall.transform.position.x + 20 * Time.deltaTime * fireBallDir, fireBall.transform.position.y, 0);
+
+                isDetectedGroundOnFeet = Physics2D.OverlapBox(new Vector2(fireBall.transform.position.x, fireBall.transform.position.y - 0.25f), new Vector2(fireBall.GetComponent<BoxCollider2D>().size.x * 0.8f, fireBall.GetComponent<BoxCollider2D>().size.y * 0.1f), 0.0f, playerController.whatIsGround);
+                isDetectedGroundOnLeft = Physics2D.OverlapBox(new Vector2(fireBall.transform.position.x - 0.25f, fireBall.transform.position.y + 0.25f), new Vector2(fireBall.GetComponent<BoxCollider2D>().size.x * 0.1f, fireBall.GetComponent<BoxCollider2D>().size.y * 0.1f), 0.0f, playerController.whatIsGround);
+                isDetectedGroundOnRight = Physics2D.OverlapBox(new Vector2(fireBall.transform.position.x + 0.25f, fireBall.transform.position.y + 0.25f), new Vector2(fireBall.GetComponent<BoxCollider2D>().size.x * 0.1f, fireBall.GetComponent<BoxCollider2D>().size.y * 0.1f), 0.0f, playerController.whatIsGround);
+
+                if (isDetectedGroundOnFeet)
+                {
+                    fireBall.GetComponent<Rigidbody2D>().velocity = Vector2.up * 10;
+                }
+
+                if (t >= 0.1f)
+                {
+                    Sprite fireBallSprite = Resources.Load<Tile>(fireBallAnimRes[index]).sprite as Sprite;
+                    fireBall.GetComponent<SpriteRenderer>().sprite = fireBallSprite;
+
+
+                    if (index == fireBallAnimRes.Length - 1)
+                    {
+                        index = 0;
+                    }
+                    else
+                    {
+                        index++;
+                    }
+
+                    t = 0f;
+
+                }
+
+                if (isDetectedGroundOnLeft || isDetectedGroundOnRight)
+                {
+                    bumpAtHit.Play();
+
+                    StartCoroutine(fireBallExplosionAnim(new Vector3(fireBall.transform.position.x, fireBall.transform.position.y, 0)));
+                    Destroy(fireBall);
+                    break;
+                }
+
+                if (Vector2.Distance(playerController.transform.position, fireBall.transform.position) > 100)
+                {
+                    Destroy(fireBall);
+                    break;
+                }
+            }
+
+
+            yield return null;
+        }
+
+    }
+
+    IEnumerator fireBallExplosionAnim(Vector3 fireBallPos)
+    {
+
+        string[] explosionStr = { "Tiles/items_objects_NPC_spritesheet_287", "Tiles/items_objects_NPC_spritesheet_302", "Tiles/items_objects_NPC_spritesheet_327" };
+
+        GameObject goExplosion = new GameObject("Explosion");
+
+        goExplosion.transform.position = fireBallPos;
+
+        goExplosion.AddComponent<SpriteRenderer>();
+
+        goExplosion.GetComponent<SpriteRenderer>().sortingLayerName = "Foreground";
+        goExplosion.GetComponent<SpriteRenderer>().sortingOrder = 2;
+
+        goExplosion.layer = 8;
+
+        var t = 0f;
+        var index = 0;
+
+        UnityEngine.WaitForSeconds waitTime = new WaitForSeconds(0.05f);
+
+        while (true)
+        {
+            t += Time.deltaTime;
+
+            if (index == explosionStr.Length - 1)
+            {
+                Destroy(goExplosion);
+                break;
+            }
+
+            Tile explosionTile = Resources.Load<Tile>(explosionStr[index]) as Tile;
+            Sprite spriteExplosionTile = explosionTile.sprite;
+
+            Debug.Log("explosionStr: " + explosionStr[index]);
+
+            goExplosion.GetComponent<SpriteRenderer>().sprite = spriteExplosionTile;
+            index++;
+
+
+            yield return waitTime;
+        }
+
+
+    }
+
+
     IEnumerator mushMovementAndDetect(GameObject goSpriteItemTile, bool flagExistingMush)
     {
         var mushDir = 1;
@@ -731,13 +949,13 @@ public class MapManager : MonoBehaviour
         //cambiar condicion para que se mueva, si detecta colision, cambie de direccion.
         while (true)
         {
-            if (!goSpriteItemTile.Equals(null))
+            if (goSpriteItemTile)
             {
                 isDetectAnythingHitMush = Physics2D.OverlapBox(new Vector2(goSpriteItemTile.transform.position.x, goSpriteItemTile.transform.position.y), new Vector2(goSpriteItemTile.GetComponent<BoxCollider2D>().size.x * 0.9f, goSpriteItemTile.GetComponent<BoxCollider2D>().size.y / 2.5f), 0.0f, playerController.whatIsGround);
                 goSpriteItemTile.transform.position = new Vector2(goSpriteItemTile.transform.position.x + (bounceSpeed / 1.5f) * Time.deltaTime * mushDir, goSpriteItemTile.transform.position.y);
             }
 
-            if (!goSpriteItemTile.Equals(null) && isDetectAnythingHitMush)
+            if (goSpriteItemTile && isDetectAnythingHitMush)
             {
                 if (mushDir == 1)
                 {
@@ -758,7 +976,11 @@ public class MapManager : MonoBehaviour
                 }
             }
 
-
+            if (goSpriteItemTile && Vector2.Distance(playerController.transform.position, goSpriteItemTile.transform.position) > 100)
+            {
+                Destroy(goSpriteItemTile);
+                break;
+            }
 
             yield return null;
         }
@@ -972,6 +1194,29 @@ public class MapManager : MonoBehaviour
             yield return null;
 
         }
+    }
+    IEnumerator starMusic()
+    {
+        GameObject goBackgroundAudio;
+        goBackgroundAudio = GameObject.Find("AudioManager");
+        if (!starTheme.isPlaying)
+        {
+            goBackgroundAudio.GetComponent<AudioSource>().mute = true;
+            starTheme.Play();
+        }
+
+        UnityEngine.WaitForSeconds waitTime = new WaitForSeconds(13f);
+
+        yield return waitTime;
+
+        starTheme.Stop();
+        goBackgroundAudio.GetComponent<AudioSource>().Play();
+        goBackgroundAudio.GetComponent<AudioSource>().mute = false;
+        playerController.isStar = false;
+        waitTime = new WaitForSeconds(13f);
+
+
+
     }
 }
 

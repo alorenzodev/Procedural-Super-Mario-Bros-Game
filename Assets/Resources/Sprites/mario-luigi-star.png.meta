@@ -1,19 +1,7 @@
 fileFormatVersion: 2
-guid: 5fdde4db3c381dc48b0e34dff8478fd9
+guid: 642ab6455300b8d4f8bef9ae26ebb042
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 4404682609424559887
-    second: fireBall_0
-  - first:
-      213: -3787352033217031075
-    second: fireBall_1
-  - first:
-      213: -550635457929046388
-    second: fireBall_2
-  - first:
-      213: -8673932453343063109
-    second: fireBall_3
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -60,7 +48,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -125,91 +113,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: fireBall_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f0f671b0f73902d30800000000000000
-      internalID: 4404682609424559887
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fireBall_1
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 0
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d54debc546f907bc0800000000000000
-      internalID: -3787352033217031075
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fireBall_2
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c869769e7ffbb58f0800000000000000
-      internalID: -550635457929046388
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fireBall_3
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 0
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bb311c0e36000a780800000000000000
-      internalID: -8673932453343063109
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
