@@ -14,12 +14,14 @@ public class MapManager : MonoBehaviour
 
     [SerializeField]
     private GameObject player;
+    [SerializeField]
+    private GameObject score;
 
     private Tile UsedSurpriseBox;
     private TileBase voidTileBase;
 
     private PlayerController playerController;
-    private PunctuationController punctController;
+    private ScoreController scoreController;
 
     [SerializeField]
     private List<TileData> tileDatas;
@@ -73,7 +75,7 @@ public class MapManager : MonoBehaviour
     private void Start()
     {
         playerController = player.GetComponent<PlayerController>();
-        punctController = player.GetComponent<PunctuationController>();
+        scoreController = score.GetComponent<ScoreController>();
         
         UsedSurpriseBox = Resources.Load<Tile>("Tiles/overworld_tileset_46") as Tile;
 
@@ -197,6 +199,8 @@ public class MapManager : MonoBehaviour
                 print("En la posicion de grid" + playerPosition + "existe el siguiente tile: [" + tileBaseCoin + "]. En el TileMap: " + detail.name);
                 coinObtain.Play();
                 detail.SetTile(playerPosition, voidTileBase);
+                scoreController.scoreDispatcher(false, 4);
+                scoreController.sumCoinsOnCanvas();
             }
 
             playerPosition = detail.WorldToCell(playerController.transform.position + new Vector3(0, 0.5f));
@@ -207,6 +211,8 @@ public class MapManager : MonoBehaviour
                 print("En la posicion de grid" + playerPosition + "existe el siguiente tile: [" + tileBaseCoin + "]. En el TileMap: " + detail.name);
                 coinObtain.Play();
                 detail.SetTile(playerPosition, voidTileBase);
+                scoreController.scoreDispatcher(false, 4);
+                scoreController.sumCoinsOnCanvas();
             }
 
         }
@@ -221,6 +227,8 @@ public class MapManager : MonoBehaviour
                 print("En la posicion de grid" + playerPosition + "existe el siguiente tile: [" + tileBaseCoin + "]. En el TileMap: " + detail.name);
                 coinObtain.Play();
                 detail.SetTile(playerPosition, voidTileBase);
+                scoreController.scoreDispatcher(false, 4);
+                scoreController.sumCoinsOnCanvas();
             }
         }
 
@@ -383,28 +391,25 @@ public class MapManager : MonoBehaviour
         var random = UnityEngine.Random.Range(0f, 1f);
 
         //Capar posibilidad de estrellas a 1 mientras se tiene, y mientras haya una estrella en juego.
-        if (!starTheme.isPlaying && !playerController.isStar && !GameObject.Find("star"))
+        if (random <= 0.02f && (!starTheme.isPlaying && !playerController.isStar && !GameObject.Find("star")))
         {
-            if (random <= 1f)
-            {
-                starItem(gridPosition);
-                punctController.hitObject = 1;
-            }
-            else if (random <= 1f)
-            {
-                mushItem(gridPosition);
-                punctController.hitObject = 2;
-            }
+            starItem(gridPosition);
+        }
+        else if (random <= 0.05f && (!starTheme.isPlaying && !playerController.isStar && !GameObject.Find("star")))
+        {
+            mushItem(gridPosition);
         }
         else if (random <= 0.2f)
         {
             yoshiCoinItem(gridPosition);
-            punctController.hitObject = 3;
+            scoreController.scoreDispatcher(true, 4);
+            scoreController.sumCoinsOnCanvas();
         }
         else if (random <= 1)
         {
             coinItem(gridPosition);
-            punctController.hitObject = 4;
+            scoreController.scoreDispatcher(true, 4);
+            scoreController.sumCoinsOnCanvas();
         }
     }
 
@@ -675,6 +680,7 @@ public class MapManager : MonoBehaviour
                     yield return waitTime;
                     yoshiCoinObtain.Play();
                     Destroy(goSpriteItemTile);
+                    scoreController.scoreDispatcher(true, 4);
                 }
 
                 break;
@@ -966,14 +972,7 @@ public class MapManager : MonoBehaviour
                     mushDir = 1;
                 }
 
-                if (mushDir == -1)
-                {
-                    mushDir = 1;
-                }
-                else
-                {
-                    mushDir = -1;
-                }
+                
             }
 
             if (goSpriteItemTile && Vector2.Distance(playerController.transform.position, goSpriteItemTile.transform.position) > 100)
@@ -1058,9 +1057,12 @@ public class MapManager : MonoBehaviour
                 Tile coinItem = Resources.Load<Tile>("Tiles/yoshi_coin_5") as Tile;
                 Sprite spriteItemTile = coinItem.sprite;
                 goSpriteItemTile.GetComponent<SpriteRenderer>().sprite = spriteItemTile;
+                
                 goSpriteItemTile.transform.position = blockCoinOriginalPos;
-
+                
+                
                 Destroy(goSpriteItemTile);
+                
                 break;
             }
 
